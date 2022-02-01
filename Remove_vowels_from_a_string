@@ -1,0 +1,17 @@
+ // this program removes vowels from a string and returns a string with all vowels removed
+ public static String disemvowel(String str) {
+  // create an empy string a to hold the string with removed vowels
+        String a="";
+        // Turn your string into character array
+        char[] chara =str.toCharArray();
+        // visit each character and check if it a vowel.If a character is a vowel then do not add it to the string a 
+        for( int i=0 ; i< chara.length; i++){
+            char c =chara[i];
+            if(c != 'i' && c != 'u' && c != 'o' && c != 'a' && c != 'e'&&
+            c != 'I' && c != 'U' && c != 'O' && c != 'A' && c != 'E'){
+                a += c;
+            }
+        }
+        // when you are done to visit each word then return your string with all the vowels removed
+        return a;
+    }
