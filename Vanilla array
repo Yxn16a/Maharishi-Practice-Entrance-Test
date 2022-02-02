@@ -1,0 +1,38 @@
+Question: 
+
+An array is called vanilla if all its elements are made up of the same digit. 
+For example {1, 1, 11, 1111, 1111111} is a vanilla array because all its elements use only the digit 1.
+However, the array {11, 101, 1111, 11111} is not a vanilla array because its elements use the digits 0 and 1. 
+Write a method called isVanilla that returns 1 if its argument is a vanilla array. 
+Otherwise it returns 0
+
+Solution: 
+
+ public static int isVanilla(int[] a) {
+        // create an arraylist to store each integer from given array
+        ArrayList<Integer> newArray = new ArrayList<Integer>();
+        int remainder = 0;
+        int firstNum = 0;
+        // check if the lengh of the array is zero and if it is zero then return 1 
+        if (a.length == 0 || a.length == 1) {
+            return 1;
+        }
+        // otherwise loop by dividing each number into its pieces and addtheme to the array list
+        // remember all numbers in the array should be make by same digits 
+        for (int j : a) {
+            while (Math.abs(j) > 0) {
+                remainder = j % 10;
+                newArray.add(Math.abs(remainder));
+                j = j / 10;
+                remainder = 0;
+            }
+        }
+        // loop the arrayList to check if all numbers are same as the first numbers and it not return zero otherwise return 1. 
+        firstNum = newArray.get(0);
+        for (int n : newArray) {
+            if (n != firstNum) {
+                return 0;
+            }
+        }
+        return 1;
+    }
