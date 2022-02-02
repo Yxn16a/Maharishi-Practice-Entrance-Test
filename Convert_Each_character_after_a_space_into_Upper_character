@@ -1,0 +1,49 @@
+This function convert each character after the space into upper case and return the string with each character after the space in the upper case
+public static String toJadenCase(String phrase) {
+        // create an empty string to store the returned String after execution
+        String a="";
+        // convert the string sentence of word into character array 
+        char[] chara = phrase.toCharArray();
+        // loop the character array
+        for(int i=0 ; i< chara.length; i++){
+            // have to pointer one points to the first character the array and the other one
+            // points to the zero character in the array 
+            Character c = chara[i];
+            Character previousChar =0;
+            // covert the character first pointer character to upper
+            String  upper= c.toString().toUpperCase();
+            // make the converted character into an uppercase character 
+            String justC = c.toString();
+            // create a boolean statement that will help you to check if the previous
+            // character is a space and when you find a space
+            // you have to make the next character an upper case if it is not an upper case
+            boolean previous =false;
+
+            if(i > 0){
+                previousChar = chara[i-1];
+                // if the previous character is a space then make the current character an upper
+                //case 
+                previous = Character.isWhitespace(previousChar);
+            }
+            // to the same here, Just look if the previous character is an upper case and then make
+            // the current character and upper case. 
+            if(i == 0 && !upper.equals(justC)){
+
+                String d = Character.toString(c);
+                String b = d.toUpperCase();
+                a +=b;
+
+            } else if(previous && !upper.equals(justC)){
+                String d = Character.toString(c);
+                String b = d.toUpperCase();
+                a +=b;
+            } else{
+                String d = Character.toString(c);
+                String b = d.toLowerCase();
+                a +=d;
+            }
+        }
+        // return the string that you got with each word after the space is an upper case letter
+        // and any word in the middle of the string should be  a lower case. 
+            return a;
+    }
