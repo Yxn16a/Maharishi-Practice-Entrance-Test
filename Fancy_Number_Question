@@ -1,0 +1,23 @@
+// fancy Number question
+    // a fancy number is a number in which when you add two previous number where the 
+    // first number is multiplied by two and another one multiplied by three then the result
+    // will be equal to that number
+    public  static int fancyNumber(int n){
+        int n1=1;
+        int n2 =1;
+        // n3 is a fancy number  because when you take n1*2 + n2*3 this is equal to 
+        // the fancyNumber which is n3
+        int n3 = n1*2 + n2*3;
+        while(true){
+            if(n3==n){
+                return 1;
+            }
+            if(n3>n){
+                break;
+            }
+            n1=n2;
+            n2= n3;
+            n3 = n1*2 + n2*3;
+        }
+        return 0;
+    }
