@@ -1,0 +1,51 @@
+Define a positive number to be isolated if none of the digits in its square are in its cube. 
+For example 163 is n isolated number because 69*69 = 26569 and 69*69*69 = 4330747 and the square does not contain any of the digits
+0, 3, 4 and 7 which are the digits used in the cube. On the other hand 162 is not an isolated number because 162*162=26244 and 162*162*162
+= 4251528 and the digits 2 and 4 which appear in the square are also in the cube.
+Write a function named isIsolated that returns 1 if its argument is an isolated number,
+it returns 0 if its not an isolated number and it returns -1 if it cannot determine whether it is isolated or not (see the note below).
+The function signature is: int Isolated(Long n ){}
+
+solutions: 
+In this solution we find the square and the cubed of a number and then store each digit from square and cubed number to see if there is anyNumber that matches
+if any number matches then we return -1 other wise we will return 1
+
+public static int isIsolated(long n) {
+// create a remainder holder while we loop to each number from the squared and from cubed
+        long squaredRemainder = 0;
+        long cubedRemainder = 0;
+        // create arrayList to hold digits from cubed and squared number
+        ArrayList<Long> squareArray = new ArrayList<Long>();
+        ArrayList<Long> cubedArray = new ArrayList<Long>();
+        if (n > 2097151 || n < 1) {
+            return -1;
+        }
+        // find square and cube of a number gived number 
+        long squared = (long) Math.pow(n, 2);
+        long cubed = (long) Math.pow(n, 3);
+        loop through square by picking the last number and storing it 
+        while (squared > 0) {
+            squaredRemainder = squared % 10;
+            squareArray.add(squaredRemainder);
+            squared = squared / 10;
+            squaredRemainder = 0;
+
+        }
+        // loop through cubed of a number and store the last digit 
+        while (cubed > 0) {
+            cubedRemainder = cubed % 10;
+            cubedArray.add(cubedRemainder);
+            cubed = cubed / 10;
+            cubedRemainder = 0;
+        }
+        // compare the two arrayList(one for the squared result and the other of cubed result)
+        for (Long square : squareArray) {
+            for (Long cubed : cubedArray) {
+            // everytime check if any number is equal from both list and return zero other wise keep looping and return 1
+                if (Objects.equals(squared, cubed)) {
+                    return 0;
+                }
+            }
+        }
+        return 1;
+    }
