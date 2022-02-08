@@ -1,0 +1,23 @@
+Define an array to be sum-safe if none of its elements is equal to the sum of its elements. The array
+a = {5, -5, 0} is not sum-safe because the sum of its elements is 0 and a[2] == 0. 
+However, the array a = {5, -2, 1} is sum-safe because the sum of its elements is 4 and none of its elements equal 4.
+Write a function named isSumSafe that returns 1 if its argument is sum-safe, otherwise it returns 0.
+
+public static int isSumSafe(int[] a) {
+        int sum = 0;
+        // check if length is zero and then return
+        if (a.length == 0) {
+            return sum;
+        }
+        // find sum of element 
+        for (int j : a) {
+            sum += j;
+        }
+        // compare each element to sum 
+        for (int i : a) {
+            if (i == sum) {
+                return 0;
+            }
+        }
+        return 1;
+    }
